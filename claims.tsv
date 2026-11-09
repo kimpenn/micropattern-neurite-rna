@@ -5,8 +5,8 @@ whole_control_permanova_R2	Micropattern vs standard	0.051	0.0005	micropattern	pe
 classifier_accuracy	Micropattern vs standard	0.57	0.005	micropattern	classifier_accuracy	
 classifier_chance	Micropattern vs standard	0.52	0.005	micropattern	classifier_chance	
 classifier_P	Micropattern vs standard	0.39	0.005	micropattern	classifier_P	
-hotelling_genes	Micropattern vs standard	13564	0	micropattern	hotelling_genes	
-hotelling_P	Micropattern vs standard	0.15	0.005	micropattern	hotelling_P	
+mean_difference_genes	Micropattern vs standard	13564	0	micropattern	mean_difference_genes	
+mean_difference_P	Micropattern vs standard	0.15	0.005	micropattern	mean_difference_P	
 paired_consistent_8of9	Micropattern vs standard	601	0	micropattern	consistent_8of9	
 paired_whole_higher_pct	Micropattern vs standard	69.6	0.05	micropattern	whole_higher_pct	
 paired_signflip_P	Micropattern vs standard	0.016	0.0005	micropattern	signflip_P	
@@ -73,6 +73,7 @@ proxdist_exact_omit12_P	Proximal vs distal	0.016	0.0005	proximal_distal	exact_om
 polarity_median_pct_expected	Proximal vs distal	75	0.5	proximal_distal	polarity_median_pct_expected	
 polarity_markers_median_abs_log2	Proximal vs distal	1.54	0.005	proximal_distal	polarity_markers_median_abs_log2	
 polarity_reference_median_abs_log2	Proximal vs distal	0.51	0.005	proximal_distal	polarity_reference_median_abs_log2	
+polarity_reference_proximal_higher	Proximal vs distal	6	0	proximal_distal	polarity_reference_proximal_higher	
 consistent_10of12_total	Proximal vs distal	1208	0	proximal_distal	consistent_10of12_total	
 consistent_10of12_proximal	Proximal vs distal	1154	0	proximal_distal	consistent_10of12_proximal	
 consistent_10of12_distal	Proximal vs distal	54	0	proximal_distal	consistent_10of12_distal	
@@ -113,9 +114,6 @@ top100_proximal_pct	Proximal vs distal	65.9	0.05	proximal_distal	top100_proximal
 permdisp_distal	Proximal vs distal	182	0.5	proximal_distal	permdisp_distal	
 permdisp_proximal	Proximal vs distal	215	0.5	proximal_distal	permdisp_proximal	
 permdisp_P	Proximal vs distal	0.24	0.005	proximal_distal	permdisp_P	
-within_minus_across_r_prox_dist	Proximal vs distal	-0.016	0.0005	proximal_distal	within_minus_across_r_prox_dist	
-within_minus_across_r_prox_soma	Proximal vs distal	0.024	0.0005	proximal_distal	within_minus_across_r_prox_soma	
-within_minus_across_r_dist_soma	Proximal vs distal	0.022	0.0005	proximal_distal	within_minus_across_r_dist_soma	
 omit12_consistent_9of11	Proximal vs distal	1509	0	proximal_distal	omit12_consistent_9of11	
 omit12_consistent_10of11	Proximal vs distal	607	0	proximal_distal	omit12_consistent_10of11	
 axon_Mapt	Proximal vs distal	0.13	0.005	proximal_distal	axon_Mapt	

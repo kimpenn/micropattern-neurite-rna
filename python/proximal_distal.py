@@ -3,7 +3,7 @@
 
 Compartment separation (exact restricted PERMANOVA and leave-one-pair-out), the 10-of-12 consistency
 sets and their exact sign-flip null, the Middleton Table S4 overlap of the 54 candidates, marker
-panels, and descriptive checks (abundance, detection, read concentration, dispersion, pairing).
+panels, and descriptive checks (abundance, detection, read concentration, dispersion).
 
 Writes results/proximal_distal.tsv together with the keys from proximal_distal_nulls.py,
 depth_controls.py and normalization_robustness.py, which must be run first.
@@ -224,6 +224,7 @@ def markers(nd: Neurite) -> list[tuple[str, object]]:
         ("polarity_median_pct_expected", polar.pct_sets_expected_direction.median()),
         ("polarity_markers_median_abs_log2", polar.median_log2_distal_over_proximal.abs().median()),
         ("polarity_reference_median_abs_log2", ref.median_log2_distal_over_proximal.abs().median()),
+        ("polarity_reference_proximal_higher", int((ref.median_log2_distal_over_proximal < 0).sum())),
         *[(f"axon_{g}", v) for g, v in zip(axon.gene, axon.median_distal_over_proximal)],
         ("gfap_elevated_distal", int((gfap > GFAP_ELEVATED_CPM).sum())),
         ("gfap_elevated_distal_cultures", ",".join(c.split("_")[0] for c in gfap.index[gfap > GFAP_ELEVATED_CPM])),
@@ -246,11 +247,6 @@ def dispersion(d2: np.ndarray, labels: np.ndarray) -> np.ndarray:
     return np.column_stack(out)
 
 
-def within_minus_across(c: pd.DataFrame, a: str, b: str) -> float:
-    r = np.corrcoef(c[[f"{n}_{a}" for n in CULTURES]].T, c[[f"{n}_{b}" for n in CULTURES]].T)[:12, 12:]
-    return float(np.diag(r).mean() - r[~np.eye(12, dtype=bool)].mean())
-
-
 def descriptive(nd: Neurite) -> list[tuple[str, object]]:
     x = np.log2(nd.cpm.loc[nd.universe, nd.prox + nd.dist].to_numpy().T + 1)
     disp = dispersion(squareform(pdist(x, "sqeuclidean")), pair_swaps(12))
@@ -263,9 +259,6 @@ def descriptive(nd: Neurite) -> list[tuple[str, object]]:
         ("permdisp_proximal", disp[0, 0]),
         ("permdisp_distal", disp[0, 1]),
         ("permdisp_P", float(np.mean(np.abs(diff) >= abs(diff[0]) * (1 - TIE)))),
-        ("within_minus_across_r_prox_dist", within_minus_across(nd.cpm, "Proximal_Dendrites", "Distal_Dendrites")),
-        ("within_minus_across_r_prox_soma", within_minus_across(nd.cpm, "Proximal_Dendrites", "Soma")),
-        ("within_minus_across_r_dist_soma", within_minus_across(nd.cpm, "Distal_Dendrites", "Soma")),
     ]
 
 

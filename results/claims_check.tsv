@@ -5,8 +5,8 @@ whole_control_permanova_R2	0.051	0.0513	match
 classifier_accuracy	0.57	0.5714	match	
 classifier_chance	0.52	0.5238	match	
 classifier_P	0.39	0.3908	match	
-hotelling_genes	13564	13564	match	
-hotelling_P	0.15	0.146	match	
+mean_difference_genes	13564	13564	match	
+mean_difference_P	0.15	0.146	match	
 paired_consistent_8of9	601	601	match	
 paired_whole_higher_pct	69.6	69.6	match	
 paired_signflip_P	0.016	0.0156	match	
@@ -73,6 +73,7 @@ proxdist_exact_omit12_P	0.016	0.015625	match
 polarity_median_pct_expected	75	75.0	match	
 polarity_markers_median_abs_log2	1.54	1.539689223099509	match	
 polarity_reference_median_abs_log2	0.51	0.5118439001752384	match	
+polarity_reference_proximal_higher	6	6	match	
 consistent_10of12_total	1208	1208	match	
 consistent_10of12_proximal	1154	1154	match	
 consistent_10of12_distal	54	54	match	
@@ -113,9 +114,6 @@ top100_proximal_pct	65.9	65.8625307424113	match
 permdisp_distal	182	181.99107779374398	match	
 permdisp_proximal	215	214.8100833128649	match	
 permdisp_P	0.24	0.2431640625	match	
-within_minus_across_r_prox_dist	-0.016	-0.016012119489573262	match	
-within_minus_across_r_prox_soma	0.024	0.024168557561428772	match	
-within_minus_across_r_dist_soma	0.022	0.02192921822430971	match	
 omit12_consistent_9of11	1509	1509	match	
 omit12_consistent_10of11	607	607	match	
 axon_Mapt	0.13	0.13169166304358745	match	

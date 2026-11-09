@@ -83,17 +83,19 @@ def multivariate_tests(counts: pd.DataFrame) -> list[tuple[str, object]]:
     ]
 
 
-def hotelling(counts: pd.DataFrame) -> list[tuple[str, object]]:
+def paired_mean_difference(counts: pd.DataFrame) -> list[tuple[str, object]]:
+    """Paired mean-difference test: n times the sum over genes of the squared mean paired difference,
+    tested by sign-flip permutation. It does not invert a covariance matrix, so it is not Hotelling's T²."""
     whole, ctrl = whole_control_pairs(counts)
     c = cpm(counts)
     keep = np.maximum(c[whole].to_numpy(), c[ctrl].to_numpy()).max(axis=1) >= 1
     d = (np.log2(c.loc[keep, whole].to_numpy() + 1) - np.log2(c.loc[keep, ctrl].to_numpy() + 1)).T
     n = d.shape[0]
-    t2 = n * np.sum(d.mean(axis=0) ** 2)
+    stat = n * np.sum(d.mean(axis=0) ** 2)
     exact = 0
     for signs in itertools.product((-1, 1), repeat=n):
         s = np.array(signs)[:, None]
-        exact += int(n * np.sum((d * s).mean(axis=0) ** 2) >= t2 - 1e-9)
+        exact += int(n * np.sum((d * s).mean(axis=0) ** 2) >= stat - 1e-9)
     # Seed 42. Consume 5,000 shuffles of 24 and 5,000 sign flips of 12 before the null.
     np.random.seed(42)
     replay_shuffles([(5000, 24)])
@@ -103,11 +105,11 @@ def hotelling(counts: pd.DataFrame) -> list[tuple[str, object]]:
     for _ in range(5000):
         s = np.random.choice([-1, 1], size=n)[:, None]
         null.append(n * np.sum((d * s).mean(axis=0) ** 2))
-    p_mc = (np.sum(np.array(null) >= t2) + 1) / 5001
+    p_mc = (np.sum(np.array(null) >= stat) + 1) / 5001
     return [
-        ("hotelling_genes", int(keep.sum())),
-        ("hotelling_P", round(p_mc, 4)),
-        ("hotelling_P_exact_512", round(exact / 2 ** n, 4)),
+        ("mean_difference_genes", int(keep.sum())),
+        ("mean_difference_P", round(p_mc, 4)),
+        ("mean_difference_P_exact_512", round(exact / 2 ** n, 4)),
     ]
 
 
@@ -268,7 +270,7 @@ def main() -> None:
     counts_ercc = load_counts(ercc=True)
     rows = []
     rows += multivariate_tests(counts)
-    rows += hotelling(counts)
+    rows += paired_mean_difference(counts)
     paired, _ = paired_consistency(counts)
     rows += paired
     rows += bootstrap_direction(counts_ercc)

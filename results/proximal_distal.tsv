@@ -38,6 +38,7 @@ candidates_detected_11of12_distal	45
 polarity_median_pct_expected	75.0
 polarity_markers_median_abs_log2	1.539689223099509
 polarity_reference_median_abs_log2	0.5118439001752384
+polarity_reference_proximal_higher	6
 axon_Mapt	0.13169166304358745
 axon_Snap25	0.18891479627200156
 axon_Syt1	0.08521652024421508
@@ -53,9 +54,6 @@ top100_proximal_pct	65.8625307424113
 permdisp_proximal	214.8100833128649
 permdisp_distal	181.99107779374398
 permdisp_P	0.2431640625
-within_minus_across_r_prox_dist	-0.016012119489573262
-within_minus_across_r_prox_soma	0.024168557561428772
-within_minus_across_r_dist_soma	0.02192921822430971
 observed_distal_higher	54
 global_rate	0.3471967340209423
 global_rate_null_mean	2.8036

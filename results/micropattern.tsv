@@ -7,9 +7,9 @@ classifier_accuracy	0.5714
 classifier_chance	0.5238
 classifier_P	0.3908
 cohen_h_classifier	0.1
-hotelling_genes	13564
-hotelling_P	0.146
-hotelling_P_exact_512	0.1445
+mean_difference_genes	13564
+mean_difference_P	0.146
+mean_difference_P_exact_512	0.1445
 paired_tested_genes	12797
 consistent_8of9	601
 consistent_whole_higher	418

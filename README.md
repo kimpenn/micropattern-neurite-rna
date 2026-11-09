@@ -8,7 +8,7 @@ Mouse E18 hippocampal neurons were cultured on micropatterned coverslips and mic
 
 ## Contents
 
-- `data/Patterned_Neuron_rmdup_exon_counts.tsv`: deduplicated exon counts, 23,545 genes (including 92 ERCC reference rows; no spike-in was added) by 59 libraries. This is the GEO processed file and the input to every analysis.
+- `data/Patterned_Neuron_rmdup_exon_counts.tsv`: deduplicated exon counts for 23,453 genes by 59 libraries, plus 92 ERCC reference rows from the annotation used for counting (no spike-in was added; the ERCC rows hold 59 reads in total). This is the GEO processed file and the input to every analysis.
 - `data/Patterned_Neuron_counted_exon_coordinates_mm10.tsv`: mm10 exon coordinates for every counted gene, from the annotation used for counting.
 - `data/published/`: Supplementary Files 1–4 and Supplementary Table 1, used to check the code against the published tables.
 - `data/upstream/`: per-library read-pair counts before and after deduplication, and non-deduplicated counts for five libraries.
@@ -33,10 +33,10 @@ Python 3.14 with `environment/requirements.txt`. R 4.5.3 with Bioconductor 3.21;
 
 | Paper section | Script |
 |---|---|
-| Micropattern versus standard: PERMANOVA, classifier, paired Hotelling-like test, 8-of-9 consistency, bootstrap, subsampling, stress markers, PCA covariates, batch | `python/micropattern.py` |
+| Micropattern versus standard: PERMANOVA, classifier, paired mean-difference test, 8-of-9 consistency, bootstrap, subsampling, stress markers, PCA covariates, batch | `python/micropattern.py` |
 | Sample correlations, outlier screen, library sizes | `python/qc.py` |
 | Deduplication | `python/upstream.py` |
-| Proximal versus distal: PERMANOVA and leave-one-pair-out, 10-of-12 consistency, polarity, axon and glial markers, PERMDISP, correlations, culture-12 omission | `python/proximal_distal.py` |
+| Proximal versus distal: PERMANOVA and leave-one-pair-out, 10-of-12 consistency, polarity, axon and glial markers, PERMDISP, culture-12 omission | `python/proximal_distal.py` |
 | Nulls for the 54-gene candidate set | `python/proximal_distal_nulls.py` |
 | Depth matching and pseudo-distal controls | `python/depth_controls.py` |
 | Normalization dependence | `python/normalization_robustness.py` |
