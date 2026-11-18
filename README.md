@@ -2,7 +2,7 @@
 
 Code, data, and photomask design for:
 
-> Kim J, Viner C, Rosario JG, Jeong H, Wu J, Lee D, Kim J. A micropatterning platform for profiling soma, proximal neurite, and distal neurite RNA.
+> Kim J, Viner C, Rosario JG, Jeong H, Wu J, Doh J, Lee D, Kim J. A micropatterning platform for unbiased sub-cellular profiling of soma, proximal neurite, and distal neurite RNA.
 
 Mouse E18 hippocampal neurons were cultured on micropatterned coverslips and microdissected at 16 days in vitro into soma, proximal neurite, and distal neurite fractions, alongside whole neurons from micropatterned and standard cultures. Twelve matched sample sets from two litter pools gave 59 SMART-Seq v4 / Nextera XT libraries sequenced on a NovaSeq 6000.
 
@@ -54,4 +54,4 @@ Permutation tests use fixed seeds. When several tests share one generator, the e
 
 ## License
 
-Copyright (C) 2026 Jihoon Kim, Coby Viner, Jean G. Rosario, Hyejoong Jeong, Jingyu Wu, Daeyeon Lee, and Junhyong Kim. GNU General Public License, version 3 (`LICENSE`).
+Copyright (C) 2026 Jihoon Kim, Coby Viner, Jean G. Rosario, Hyejoong Jeong, Jingyu Wu, Junsang Doh, Daeyeon Lee, and Junhyong Kim. GNU General Public License, version 3 (`LICENSE`).
